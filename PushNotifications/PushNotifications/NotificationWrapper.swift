@@ -14,6 +14,8 @@ final class NotificationWrapper {
     static let shared: NotificationWrapper = NotificationWrapper()
     
     private let _center: UNUserNotificationCenter
+    private var _noticeRequestManager: [UNNotificationRequest] = []
+    
     init() {
         _center = UNUserNotificationCenter.current()
     }
@@ -46,8 +48,19 @@ final class NotificationWrapper {
         }
     }
     
-    func add(_ request: UNNotificationRequest, withCompletionHandler: ((Error?)->Void)?) {
-        _center.add(request, withCompletionHandler: withCompletionHandler)
+    func add(_ request: UNNotificationRequest) {
+        _center.add(request) { error in
+            // TODO: Process error
+        }
+        _noticeRequestManager.append(request)
+    }
+    
+    func removeAllPendingNotificationRequests() {
+        _center.removeAllPendingNotificationRequests()
+    }
+    
+    func remove(withIdentifiers: [String]) {
+        _center.removeDeliveredNotifications(withIdentifiers: withIdentifiers)
     }
 }
 

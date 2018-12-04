@@ -9,7 +9,7 @@
 import Foundation
 import UserNotifications
 
-class NoticeService {
+final class NoticeService {
     static let shared: NoticeService = NoticeService()
     
     private let _noticeWrapper: NotificationWrapper
@@ -23,6 +23,15 @@ class NoticeService {
     
     func schedule(content: UNMutableNotificationContent, after timeInterval: TimeInterval) {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: true)
-        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        _noticeWrapper.add(request)
+    }
+    
+    func cancelAllSchedule() {
+        _noticeWrapper.removeAllPendingNotificationRequests()
+    }
+    
+    func cancelSchedule(for requestsIdentifiers: [String]) {
+        _noticeWrapper.remove(withIdentifiers: requestsIdentifiers)
     }
 }

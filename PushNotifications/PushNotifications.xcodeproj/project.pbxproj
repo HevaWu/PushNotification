@@ -14,6 +14,7 @@
 		F081314021B5131C00F227FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F081313E21B5131C00F227FA /* LaunchScreen.storyboard */; };
 		F081314B21B5131C00F227FA /* PushNotificationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F081314A21B5131C00F227FA /* PushNotificationsTests.swift */; };
 		F081315621B5131C00F227FA /* PushNotificationsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F081315521B5131C00F227FA /* PushNotificationsUITests.swift */; };
+		F081316521B6212700F227FA /* NotificationWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F081316421B6212700F227FA /* NotificationWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		F081315121B5131C00F227FA /* PushNotificationsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PushNotificationsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F081315521B5131C00F227FA /* PushNotificationsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsUITests.swift; sourceTree = "<group>"; };
 		F081315721B5131C00F227FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F081316421B6212700F227FA /* NotificationWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				F081313521B5131B00F227FA /* AppDelegate.swift */,
+				F081316321B620FC00F227FA /* Notifications */,
 				F081313721B5131B00F227FA /* ViewController.swift */,
 				F081313921B5131B00F227FA /* Main.storyboard */,
 				F081313C21B5131C00F227FA /* Assets.xcassets */,
@@ -123,6 +126,14 @@
 				F081315721B5131C00F227FA /* Info.plist */,
 			);
 			path = PushNotificationsUITests;
+			sourceTree = "<group>";
+		};
+		F081316321B620FC00F227FA /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				F081316421B6212700F227FA /* NotificationWrapper.swift */,
+			);
+			name = Notifications;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F081313821B5131B00F227FA /* ViewController.swift in Sources */,
+				F081316521B6212700F227FA /* NotificationWrapper.swift in Sources */,
 				F081313621B5131B00F227FA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

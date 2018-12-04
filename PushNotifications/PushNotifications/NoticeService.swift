@@ -11,6 +11,8 @@ import UserNotifications
 
 final class NoticeService {
     static let shared: NoticeService = NoticeService()
+
+    var noticeManager: [Notice] = []
     
     private let _noticeWrapper: NotificationWrapper
     init() {
@@ -21,8 +23,14 @@ final class NoticeService {
         _noticeWrapper.requestAuthorization()
     }
     
+    func registerNotices(after timeInterval: TimeInterval) {
+        for notice in noticeManager {
+            schedule(content: Notice.generateContent(from: notice), after: timeInterval)
+        }
+    }
+    
     func schedule(content: UNMutableNotificationContent, after timeInterval: TimeInterval) {
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         _noticeWrapper.add(request)
     }

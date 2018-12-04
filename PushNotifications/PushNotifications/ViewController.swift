@@ -9,16 +9,19 @@
 import UIKit
 
 class FirstViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let notice = Notice.init(title: "First Page notice", body: "11111", categoryIdentifier: "First Page")
+        NoticeService.shared.noticeManager.append(notice)
     }
-
 }
 
 class SecondViewController: UIViewController {
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let notice = Notice.init(title: "Second Page notice", body: "22222", categoryIdentifier: "Second Page")
+        NoticeService.shared.noticeManager.append(notice)
+    }
 }
 
 class ThirdViewController: UIViewController {

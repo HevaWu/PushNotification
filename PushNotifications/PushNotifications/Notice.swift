@@ -16,7 +16,7 @@ struct Notice {
 }
 
 extension Notice {
-    static func create(notice: Notice) -> UNMutableNotificationContent {
+    static func generateContent(from notice: Notice) -> UNMutableNotificationContent {
         let content = UNMutableNotificationContent()
         content.title = notice.title
         content.body = notice.body

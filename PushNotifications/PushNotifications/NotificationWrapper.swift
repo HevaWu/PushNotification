@@ -9,7 +9,8 @@
 import UIKit
 import UserNotifications
 
-class NotificationWrapper {
+/// Wrapper UserNotifications methods
+final class NotificationWrapper {
     static let shared: NotificationWrapper = NotificationWrapper()
     
     private let _center: UNUserNotificationCenter
@@ -19,7 +20,7 @@ class NotificationWrapper {
     
     /// Request Authorization at Launch Time
     func requestAuthorization() {
-        _requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, error in
+        _center.requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, error in
             // TODO: Enable or disable features based on authorization
             if !granted {
                 self?._showDeniedDialog()
@@ -31,7 +32,7 @@ class NotificationWrapper {
     
     /// Check which types of interactions that you can use
     func getNotificationSettings() {
-        _getNotificationSettings { settings in
+        _center.getNotificationSettings { settings in
             // Do not schedule notifications if not authorized
             guard settings.authorizationStatus == .authorized else {
                 return
@@ -44,17 +45,13 @@ class NotificationWrapper {
             }
         }
     }
+    
+    func add(_ request: UNNotificationRequest, withCompletionHandler: ((Error?)->Void)?) {
+        _center.add(request, withCompletionHandler: withCompletionHandler)
+    }
 }
 
 private extension NotificationWrapper {
-    func _requestAuthorization(options: UNAuthorizationOptions, completionHandler: @escaping (Bool, Error?) -> Void) {
-        _center.requestAuthorization(options: options, completionHandler: completionHandler)
-    }
-    
-    func _getNotificationSettings(completionHandler: @escaping (UNNotificationSettings) -> Void) {
-        _center.getNotificationSettings(completionHandler: completionHandler)
-    }
-    
     /// Show the denied dialog
     func _showDeniedDialog() {
         // TODO: update to use dialog things later, or maybe some time stamp

@@ -41,12 +41,14 @@ class NotificationWrapper {
             }
         }
     }
-    
-    private func requestAuthorization(options: UNAuthorizationOptions, completionHandler: @escaping (Bool, Error?) -> Void) {
+}
+
+private extension NotificationWrapper {
+    func requestAuthorization(options: UNAuthorizationOptions, completionHandler: @escaping (Bool, Error?) -> Void) {
         center.requestAuthorization(options: options, completionHandler: completionHandler)
     }
     
-    private func getNotificationSettings(completionHandler: @escaping (UNNotificationSettings) -> Void) {
+    func getNotificationSettings(completionHandler: @escaping (UNNotificationSettings) -> Void) {
         center.getNotificationSettings(completionHandler: completionHandler)
     }
 }

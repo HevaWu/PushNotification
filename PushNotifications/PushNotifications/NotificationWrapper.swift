@@ -12,17 +12,17 @@ import UserNotifications
 class NotificationWrapper {
     static let shared: NotificationWrapper = NotificationWrapper()
     
-    let center: UNUserNotificationCenter
+    private let _center: UNUserNotificationCenter
     init() {
-        center = UNUserNotificationCenter.current()
+        _center = UNUserNotificationCenter.current()
     }
     
     /// Request Authorization at Launch Time
     func requestAuthorization() {
-        requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, error in
+        _requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, error in
             // TODO: Enable or disable features based on authorization
             if !granted {
-                self?.showDeniedDialog()
+                self?._showDeniedDialog()
             }
             
             // TODO: If denied, notify a remote notification server not to send notifications to the user’s device.
@@ -31,7 +31,7 @@ class NotificationWrapper {
     
     /// Check which types of interactions that you can use
     func getNotificationSettings() {
-        getNotificationSettings { settings in
+        _getNotificationSettings { settings in
             // Do not schedule notifications if not authorized
             guard settings.authorizationStatus == .authorized else {
                 return
@@ -47,16 +47,16 @@ class NotificationWrapper {
 }
 
 private extension NotificationWrapper {
-    func requestAuthorization(options: UNAuthorizationOptions, completionHandler: @escaping (Bool, Error?) -> Void) {
-        center.requestAuthorization(options: options, completionHandler: completionHandler)
+    func _requestAuthorization(options: UNAuthorizationOptions, completionHandler: @escaping (Bool, Error?) -> Void) {
+        _center.requestAuthorization(options: options, completionHandler: completionHandler)
     }
     
-    func getNotificationSettings(completionHandler: @escaping (UNNotificationSettings) -> Void) {
-        center.getNotificationSettings(completionHandler: completionHandler)
+    func _getNotificationSettings(completionHandler: @escaping (UNNotificationSettings) -> Void) {
+        _center.getNotificationSettings(completionHandler: completionHandler)
     }
     
     /// Show the denied dialog
-    func showDeniedDialog() {
+    func _showDeniedDialog() {
         // TODO: update to use dialog things later, or maybe some time stamp
         DispatchQueue.main.async {
             if let vc = UIApplication.shared.keyWindow?.rootViewController {

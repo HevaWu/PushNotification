@@ -15,6 +15,8 @@
 		F081314B21B5131C00F227FA /* PushNotificationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F081314A21B5131C00F227FA /* PushNotificationsTests.swift */; };
 		F081315621B5131C00F227FA /* PushNotificationsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F081315521B5131C00F227FA /* PushNotificationsUITests.swift */; };
 		F081316521B6212700F227FA /* NotificationWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F081316421B6212700F227FA /* NotificationWrapper.swift */; };
+		F081316721B66C7100F227FA /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F081316621B66C7100F227FA /* Notice.swift */; };
+		F081316921B66F4100F227FA /* NoticeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F081316821B66F4100F227FA /* NoticeService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		F081315521B5131C00F227FA /* PushNotificationsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsUITests.swift; sourceTree = "<group>"; };
 		F081315721B5131C00F227FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F081316421B6212700F227FA /* NotificationWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationWrapper.swift; sourceTree = "<group>"; };
+		F081316621B66C7100F227FA /* Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
+		F081316821B66F4100F227FA /* NoticeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				F081316421B6212700F227FA /* NotificationWrapper.swift */,
+				F081316621B66C7100F227FA /* Notice.swift */,
+				F081316821B66F4100F227FA /* NoticeService.swift */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -268,6 +274,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F081313821B5131B00F227FA /* ViewController.swift in Sources */,
+				F081316721B66C7100F227FA /* Notice.swift in Sources */,
+				F081316921B66F4100F227FA /* NoticeService.swift in Sources */,
 				F081316521B6212700F227FA /* NotificationWrapper.swift in Sources */,
 				F081313621B5131B00F227FA /* AppDelegate.swift in Sources */,
 			);

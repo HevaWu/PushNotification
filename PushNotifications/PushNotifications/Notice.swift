@@ -9,6 +9,8 @@
 import Foundation
 import UserNotifications
 
+// MARK: - Notice
+
 enum NoticeIdentifier: String {
     case FirstPage
     case SecondPage
@@ -29,4 +31,28 @@ extension Notice {
         content.categoryIdentifier = notice.categoryIdentifier.rawValue
         return content
     }
+}
+
+// MARK: - NoticeAction
+
+enum NoticeActionIdentifier: String {
+    case ACCEPT_ACTION
+    case DECLINE_ACTION
+}
+
+struct NoticeAction {
+    // TODO: check options
+    static let accept: UNNotificationAction = UNNotificationAction(identifier: NoticeActionIdentifier.ACCEPT_ACTION.rawValue, title: "Accept", options: UNNotificationActionOptions(rawValue: 0))
+    static let decline: UNNotificationAction = UNNotificationAction(identifier: NoticeActionIdentifier.DECLINE_ACTION.rawValue, title: "Decline", options: UNNotificationActionOptions(rawValue: 0))
+}
+
+// MARK: - NoticeType
+
+enum NoticeTypeIdentifier: String {
+    case TopPage
+}
+
+struct NoticeType {
+    // TODO: define your own category here
+    static let showTopPage: UNNotificationCategory = UNNotificationCategory(identifier: NoticeTypeIdentifier.TopPage.rawValue, actions: [NoticeAction.accept, NoticeAction.decline], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "", options: UNNotificationCategoryOptions.customDismissAction)
 }

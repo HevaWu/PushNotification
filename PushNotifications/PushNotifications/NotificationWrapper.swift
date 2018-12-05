@@ -19,6 +19,8 @@ final class NotificationWrapper {
         _center = UNUserNotificationCenter.current()
     }
     
+    // MARK: - Authorization
+    
     /// Request Authorization at Launch Time
     func requestAuthorization() {
         _center.requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, error in
@@ -47,6 +49,8 @@ final class NotificationWrapper {
         }
     }
     
+    // MARK: - Requests
+    
     func add(_ request: UNNotificationRequest) {
         _center.add(request) { error in
             // TODO: Process error
@@ -60,6 +64,9 @@ final class NotificationWrapper {
     func remove(withIdentifiers: [String]) {
         _center.removeDeliveredNotifications(withIdentifiers: withIdentifiers)
     }
+    
+    // MARK: - Actions
+
 }
 
 private extension NotificationWrapper {

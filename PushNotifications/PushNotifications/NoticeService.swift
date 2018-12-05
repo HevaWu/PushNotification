@@ -21,6 +21,7 @@ final class NoticeService {
     
     func setup() {
         _noticeWrapper.requestAuthorization()
+        _noticeWrapper.setDelegate()
         _noticeWrapper.registerNoticeType()
     }
     

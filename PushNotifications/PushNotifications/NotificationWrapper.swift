@@ -10,12 +10,12 @@ import UIKit
 import UserNotifications
 
 /// Wrapper UserNotifications methods
-final class NotificationWrapper {
+final class NotificationWrapper: NSObject {
     static let shared: NotificationWrapper = NotificationWrapper()
     
     private let _center: UNUserNotificationCenter
     
-    init() {
+    override init() {
         _center = UNUserNotificationCenter.current()
     }
     
@@ -70,6 +70,13 @@ final class NotificationWrapper {
     func registerNoticeType() {
         _center.setNotificationCategories([NoticeCategory.showFirstPage])
     }
+    
+    // MARK: - Delegate
+    
+    // TODO: maybe combine setDelegate() & registerNoticeType()
+    func setDelegate() {
+        _center.delegate = self
+    }
 }
 
 private extension NotificationWrapper {
@@ -90,6 +97,28 @@ private extension NotificationWrapper {
                     vc.present(alertController, animated: true, completion: nil)
                 }
             }
+        }
+    }
+}
+
+// MARK: - NotificationCenter Delegate(Action processing)
+
+extension NotificationWrapper: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        switch response.actionIdentifier {
+        case NoticeActionIdentifier.ACCEPT_ACTION.rawValue:
+            print("Accept Action")
+            break
+        case NoticeActionIdentifier.DECLINE_ACTION.rawValue:
+            print("Decline Action")
+            break
+        default:
+            break
+        }
+        
+        // Note: always need to call the completion handler when done
+        defer {
+            completionHandler()
         }
     }
 }

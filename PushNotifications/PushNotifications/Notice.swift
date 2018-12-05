@@ -46,13 +46,13 @@ struct NoticeAction {
     static let decline: UNNotificationAction = UNNotificationAction(identifier: NoticeActionIdentifier.DECLINE_ACTION.rawValue, title: "Decline", options: UNNotificationActionOptions(rawValue: 0))
 }
 
-// MARK: - NoticeType
+// MARK: - NoticeCategory
 
-enum NoticeTypeIdentifier: String {
+enum NoticeCategoryIdentifier: String {
     case TopPage
 }
 
-struct NoticeType {
+struct NoticeCategory {
     // TODO: define your own category here
-    static let showTopPage: UNNotificationCategory = UNNotificationCategory(identifier: NoticeTypeIdentifier.TopPage.rawValue, actions: [NoticeAction.accept, NoticeAction.decline], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "", options: UNNotificationCategoryOptions.customDismissAction)
+    static let showTopPage: UNNotificationCategory = UNNotificationCategory(identifier: NoticeCategoryIdentifier.TopPage.rawValue, actions: [NoticeAction.accept, NoticeAction.decline], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "", options: UNNotificationCategoryOptions.customDismissAction)
 }

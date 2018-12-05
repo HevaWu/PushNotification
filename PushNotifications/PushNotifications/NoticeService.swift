@@ -35,6 +35,12 @@ final class NoticeService {
         _noticeWrapper.add(request)
     }
     
+    func schedule(content: UNMutableNotificationContent, at dateComponents: DateComponents) {
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        _noticeWrapper.add(request)
+    }
+    
     func cancelAllSchedule() {
         _noticeWrapper.removeAllPendingNotificationRequests()
     }

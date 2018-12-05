@@ -11,7 +11,7 @@ import UIKit
 class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        let notice = Notice.init(title: "First Page notice", body: "11111", categoryIdentifier: "First Page")
+        let notice = Notice.init(title: "First Page notice", body: "11111", categoryIdentifier: NoticeIdentifier.FirstPage)
         NoticeService.shared.noticeManager.append(notice)
     }
 }
@@ -19,7 +19,7 @@ class FirstViewController: UIViewController {
 class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        let notice = Notice.init(title: "Second Page notice", body: "22222", categoryIdentifier: "Second Page")
+        let notice = Notice.init(title: "Second Page notice", body: "22222", categoryIdentifier: NoticeIdentifier.SecondPage)
         NoticeService.shared.noticeManager.append(notice)
     }
 }

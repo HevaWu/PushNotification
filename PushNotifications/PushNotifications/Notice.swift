@@ -9,10 +9,16 @@
 import Foundation
 import UserNotifications
 
+enum NoticeIdentifier: String {
+    case FirstPage
+    case SecondPage
+    case ThirdPage
+}
+
 struct Notice {
     let title: String
     let body: String
-    let categoryIdentifier: String
+    let categoryIdentifier: NoticeIdentifier
 }
 
 extension Notice {
@@ -20,7 +26,7 @@ extension Notice {
         let content = UNMutableNotificationContent()
         content.title = notice.title
         content.body = notice.body
-        content.categoryIdentifier = notice.categoryIdentifier
+        content.categoryIdentifier = notice.categoryIdentifier.rawValue
         return content
     }
 }

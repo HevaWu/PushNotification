@@ -68,7 +68,7 @@ final class NotificationWrapper {
     // MARK: - Actions
 
     func registerNoticeType() {
-        _center.setNotificationCategories([NoticeCategory.showTopPage])
+        _center.setNotificationCategories([NoticeCategory.showFirstPage])
     }
 }
 

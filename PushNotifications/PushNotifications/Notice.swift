@@ -9,13 +9,14 @@
 import Foundation
 import UserNotifications
 
-// MARK: - Notice
-
+/// Notice Category Identifier
 enum NoticeIdentifier: String {
     case FirstPage
     case SecondPage
     case ThirdPage
 }
+
+// MARK: - Notice
 
 struct Notice {
     let title: String
@@ -48,11 +49,7 @@ struct NoticeAction {
 
 // MARK: - NoticeCategory
 
-enum NoticeCategoryIdentifier: String {
-    case TopPage
-}
-
 struct NoticeCategory {
     // TODO: define your own category here
-    static let showTopPage: UNNotificationCategory = UNNotificationCategory(identifier: NoticeCategoryIdentifier.TopPage.rawValue, actions: [NoticeAction.accept, NoticeAction.decline], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "", options: UNNotificationCategoryOptions.customDismissAction)
+    static let showFirstPage: UNNotificationCategory = UNNotificationCategory(identifier: NoticeIdentifier.FirstPage.rawValue, actions: [NoticeAction.accept, NoticeAction.decline], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "", options: UNNotificationCategoryOptions.customDismissAction)
 }
